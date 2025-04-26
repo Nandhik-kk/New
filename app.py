@@ -105,3 +105,9 @@ picture = st.camera_input("Take a picture", disabled=not enable)
 
 if picture:
     st.image(picture)
+import time
+
+with st.spinner("Wait for it...", show_time=True):
+    time.sleep(5)
+st.success("Done!")
+st.button("Rerun")
