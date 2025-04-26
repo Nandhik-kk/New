@@ -107,7 +107,7 @@ if picture:
     st.image(picture)
 import time
 
-with st.spinner("Wait for it...", show_time=True):
-    time.sleep(5)
+with st.spinner("tunggu ya cil...", show_time=True):
+    time.sleep(100)
 st.success("Done!")
 st.button("Rerun")
