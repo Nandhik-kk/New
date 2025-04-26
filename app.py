@@ -100,3 +100,10 @@ with col2:
         disabled=st.session_state.disabled,
         horizontal=st.session_state.horizontal,
     )
+import streamlit as st
+
+enable = st.checkbox("Enable camera")
+picture = st.camera_input("Take a picture", disabled=not enable)
+
+if picture:
+    st.image(picture)
