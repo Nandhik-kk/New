@@ -49,10 +49,15 @@ with col2:
 with col3:
     st.header("An owl")
     st.image("https://static.streamlit.io/examples/owl.jpg")
-with st.sidebar:
-    with st.echo():
-        st.write("This code will be printed to the sidebar.")
+# Using object notation
+add_selectbox = st.sidebar.selectbox(
+    "How would you like to be contacted?",
+    ("Email", "Home phone", "Mobile phone")
+)
 
-    with st.spinner("Loading..."):
-        time.sleep(5)
-    st.success("Done!")
+# Using "with" notation
+with st.sidebar:
+    add_radio = st.radio(
+        "Choose a shipping method",
+        ("Standard (5-15 days)", "Express (2-5 days)")
+    )
