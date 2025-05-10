@@ -1,113 +1,117 @@
 import streamlit as st
 import pandas as pd
-import base64
-from datetime import datetime
+import numpy as np
+from PIL import Image
 
-# Sistem poin daur ulang
-import streamlit as st
-
-st.title("This is a title")
-st.title("_Streamlit_ is :blue[cool] :sunglasses:")
-import streamlit as st
-
-st.header("_Streamlit_ is :blue[cool] :sunglasses:")
-st.header("This is a header with a divider", divider="gray")
-st.header("These headers have rotating dividers", divider=True)
-st.header("One", divider=True)
-st.header("Two", divider=True)
-st.header("Three", divider=True)
-st.header("Four", divider=True)
-import streamlit as st
-
-st.write("This is some text.")
-
-st.slider("This is a slider", 0, 100, (25, 75))
-
-st.divider()  # 👈 Draws a horizontal rule
-
-st.write("This text is between the horizontal rules.")
-
-st.divider()  # 👈 Another horizontal rule
-
-import streamlit as st
-
-st.latex(r'''
-    a + ar + a r^2 + a r^3 + \cdots + a r^{n-1} =
-    \sum_{k=0}^{n-1} ar^k =
-    a \left(\frac{1-r^{n}}{1-r}\right)
-    ''')
-col1, col2, col3 = st.columns(3)
-
-with col1:
-    st.header("A cat")
-    st.image("https://static.streamlit.io/examples/cat.jpg")
-
-with col2:
-    st.header("A dog")
-    st.image("https://static.streamlit.io/examples/dog.jpg")
-
-with col3:
-    st.header("An owl")
-    st.image("https://static.streamlit.io/examples/owl.jpg")
-# Using object notation
-add_selectbox = st.sidebar.selectbox(
-    "How would you like to be contacted?",
-    ("Email", "Home phone", "Mobile phone")
+# Pengaturan halaman
+st.set_page_config(
+    page_title="Aplikasi Perhitungan Kadar GC",
+    page_icon="🧪",
+    layout="wide",
+    initial_sidebar_state="expanded"
 )
 
-# Using "with" notation
-with st.sidebar:
-    add_radio = st.radio(
-        "Choose a shipping method",
-        ("Standard (5-15 days)", "Express (2-5 days)")
-    )
-import streamlit as st
+# CSS untuk tampilan cerah
+st.markdown("""
+<style>
+    .main {
+        background-color: #f8f9fa;
+    }
+    .stApp {
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+    h1, h2, h3 {
+        color: #0066cc;
+    }
+    .stButton button {
+        background-color: #0066cc;
+        color: white;
+    }
+    .info-box {
+        background-color: #e6f2ff;
+        padding: 20px;
+        border-radius: 10px;
+        border-left: 5px solid #0066cc;
+        margin-bottom: 20px;
+    }
+    .header-container {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 20px;
+    }
+</style>
+""", unsafe_allow_html=True)
 
-option_map = {
-    0: ":material/add:",
-    1: ":material/zoom_in:",
-    2: ":material/zoom_out:",
-    3: ":material/zoom_out_map:",
-}
-selection = st.segmented_control(
-    "Tool",
-    options=option_map.keys(),
-    format_func=lambda option: option_map[option],
-    selection_mode="single",
-)
-st.write(
-    "Your selected option: "
-    f"{None if selection is None else option_map[selection]}"
-)
-# Store the initial value of widgets in session state
-if "visibility" not in st.session_state:
-    st.session_state.visibility = "visible"
-    st.session_state.disabled = False
-    st.session_state.horizontal = False
+# Fungsi untuk setiap halaman
+def homepage():
+    st.markdown('<div class="header-container">', unsafe_allow_html=True)
+    st.title('Aplikasi Perhitungan Kadar Metode Kromatografi Gas (GC)')
+    st.markdown('</div>', unsafe_allow_html=True)
+    
+    # Gambar dan penjelasan dalam layout kolom
+    col1, col2 = st.columns([1, 1])
+    
+    with col1:
+        # Placeholder untuk gambar spektro GC
+        st.image("https://via.placeholder.com/500x300?text=Gambar+Alat+Spektro+GC", 
+                 caption="Alat Kromatografi Gas", use_column_width=True)
+        st.info("Gambar di atas adalah alat Kromatografi Gas yang digunakan untuk analisis.")
+    
+    with col2:
+        st.markdown('<div class="info-box">', unsafe_allow_html=True)
+        st.subheader("Tentang Kromatografi Gas (GC)")
+        st.write("""
+        Kromatografi Gas adalah teknik analisis yang memisahkan senyawa berdasarkan volatilitas dan interaksi 
+        dengan fase diam dan fase gerak. Metode ini digunakan secara luas untuk analisis kualitatif dan kuantitatif
+        campuran senyawa yang dapat diuapkan.
+        
+        Komponen utama dalam sistem GC:
+        - Injektor: tempat sampel dimasukkan
+        - Kolom: tempat pemisahan terjadi
+        - Detektor: mengukur komponen yang keluar dari kolom
+        - Sistem pengolah data: merekam dan menganalisis sinyal
+        
+        Aplikasi ini membantu dalam perhitungan kadar berbagai senyawa menggunakan data yang diperoleh dari analisis GC.
+        """)
+        st.markdown('</div>', unsafe_allow_html=True)
+    
+    # Informasi tambahan
+    st.subheader("Fitur Aplikasi")
+    col1, col2, col3 = st.columns(3)
+    
+    with col1:
+        st.markdown('**Perhitungan Kadar**')
+        st.write("Perhitungan otomatis berdasarkan area peak dan faktor respons")
+    
+    with col2:
+        st.markdown('**Visualisasi Data**')
+        st.write("Grafik dan visualisasi hasil analisis")
+    
+    with col3:
+        st.markdown('**Laporan Hasil**')
+        st.write("Eksport hasil analisis dalam berbagai format")
+    
+    # Footer
+    st.markdown("---")
+    st.markdown("© 2025 Aplikasi Perhitungan Kadar Metode Kromatografi Gas")
 
-col1, col2 = st.columns(2)
+def blank_page(title):
+    st.title(title)
+    st.write("Halaman ini masih dalam pengembangan.")
+    st.write("Silakan kembali ke halaman utama.")
 
-with col1:
-    st.checkbox("Disable radio widget", key="disabled")
-    st.checkbox("Orient radio options horizontally", key="horizontal")
+# Sidebar untuk navigasi
+st.sidebar.title("Navigasi")
+page = st.sidebar.radio("Pilih Halaman:", ["Homepage", "Page 1", "Page 2", "Page 3"])
 
-with col2:
-    st.radio(
-        "Set label visibility 👇",
-        ["visible", "hidden", "collapsed"],
-        key="visibility",
-        label_visibility=st.session_state.visibility,
-        disabled=st.session_state.disabled,
-        horizontal=st.session_state.horizontal,
-    )
-enable = st.checkbox("Enable camera")
-picture = st.camera_input("Take a picture", disabled=not enable)
-
-if picture:
-    st.image(picture)
-import time
-
-with st.spinner("tunggu ya cil...", show_time=True):
-    time.sleep(100)
-st.success("Done!")
-st.button("Rerun")
+# Tampilkan halaman yang dipilih
+if page == "Homepage":
+    homepage()
+elif page == "Page 1":
+    blank_page("Page 1 - Judul akan diisi")
+elif page == "Page 2":
+    blank_page("Page 2 - Judul akan diisi")
+elif page == "Page 3":
+    blank_page("Page 3 - Judul akan diisi")
