@@ -47,7 +47,7 @@ st.markdown("""
 # Fungsi untuk setiap halaman
 def homepage():
     st.markdown('<div class="header-container">', unsafe_allow_html=True)
-    st.title('Aplikasi Perhitungan Kadar Metode Kromatografi Gas (GC)')
+    st.title('Aplikasi Perhitungan Kadar Metode Spektrofotometri UV-Vis')
     st.markdown('</div>', unsafe_allow_html=True)
     
     # Gambar dan penjelasan dalam layout kolom
@@ -63,17 +63,17 @@ def homepage():
         st.markdown('<div class="info-box">', unsafe_allow_html=True)
         st.subheader("Tentang Kromatografi Gas (GC)")
         st.write("""
-        Kromatografi Gas adalah teknik analisis yang memisahkan senyawa berdasarkan volatilitas dan interaksi 
-        dengan fase diam dan fase gerak. Metode ini digunakan secara luas untuk analisis kualitatif dan kuantitatif
-        campuran senyawa yang dapat diuapkan.
+        Spektrofotometri UV-Vis adalah teknik analisis yang digunakan untuk mengukur absorbansi suatu senyawa
+        terhadap cahaya ultraviolet (UV) dan cahaya tampak (visible/Vis). Teknik ini dimanfaatkan secara luas
+        untuk analisis kualitatif dan kuantitatif senyawa berdasarkan interaksi cahaya dengan molekul dalam sampel.
         
-        Komponen utama dalam sistem GC:
-        - Injektor: tempat sampel dimasukkan
-        - Kolom: tempat pemisahan terjadi
-        - Detektor: mengukur komponen yang keluar dari kolom
-        - Sistem pengolah data: merekam dan menganalisis sinyal
+        Komponen utama dalam sistem Spektrofotometer UV-Vis:
+        - Sumber cahaya: menghasilkan cahaya UV dan Vis (biasanya deuterium untuk UV dan tungsten untuk Vis)
+        - Monokromator: memisahkan panjang gelombang cahaya agar hanya satu panjang gelombang yang mengenai sampel
+        - Kuvet: wadah tempat sampel diletakkan
+        - Detektor: menangkap cahaya yang keluar dari sampel dan mengubahnya menjadi sinyal listrik
         
-        Aplikasi ini membantu dalam perhitungan kadar berbagai senyawa menggunakan data yang diperoleh dari analisis GC.
+        Aplikasi ini membantu dalam menentukan konsentrasi senyawa berdasarkan hukum Lambert-Beer menggunakan data absorbansi yang diperoleh dari hasil analisis UV-Vis.
         """)
         st.markdown('</div>', unsafe_allow_html=True)
     
