@@ -55,9 +55,9 @@ def homepage():
     
     with col1:
         # Placeholder untuk gambar spektro GC
-        st.image("https://via.placeholder.com/500x300?text=Gambar+Alat+Spektro+GC", 
-                 caption="Alat Kromatografi Gas", use_column_width=True)
-        st.info("Gambar di atas adalah alat Kromatografi Gas yang digunakan untuk analisis.")
+        st.image("https://lsi.fleischhacker-asia.biz/wp-content/uploads/2022/05/Spektrofotometer-UV-VIS-Fungsi-Prinsip-Kerja-dan-Cara-Kerjanya.jpg", 
+                 caption="Alat Spektrofotometer", use_column_width=True)
+        st.info("Gambar di atas adalah alat Spektrofotometer yang digunakan untuk analisis.")
     
     with col2:
         st.markdown('<div class="info-box">', unsafe_allow_html=True)
