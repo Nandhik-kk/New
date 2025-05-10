@@ -104,7 +104,7 @@ def blank_page(title):
 
 # Sidebar untuk navigasi
 st.sidebar.title("Navigasi")
-page = st.sidebar.radio("Pilih Halaman:", ["Homepage", "Page 1", "Page 2", "Page 3"])
+page = st.sidebar.radio("Pilih Halaman:", ["Homepage", "C Terukur", "kadar", "%RPD", "%REC"])
 
 # Tampilkan halaman yang dipilih
 if page == "Homepage":
