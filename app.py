@@ -110,8 +110,11 @@ page = st.sidebar.radio("Pilih Halaman:", ["Homepage", "Page 1", "Page 2", "Page
 if page == "Homepage":
     homepage()
 elif page == "Page 1":
-    blank_page("Page 1 - Judul akan diisi")
+    blank_page("Page 1 - C Terukur")
 elif page == "Page 2":
-    blank_page("Page 2 - Judul akan diisi")
+    blank_page("Page 2 - Kadar")
 elif page == "Page 3":
-    blank_page("Page 3 - Judul akan diisi")
+    blank_page("Page 3 - %RPD")
+elif page == "Page 4":
+    blank_page("Page 4 - %REC")
+
