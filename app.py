@@ -190,7 +190,7 @@ def kadar():
                 key=f"kB_w_{i}"
             )
 
-            nilai = (c_ukur - vol) / bobot if bobot != 0 else 0.0
+            nilai = (c_ukur * vol) / bobot if bobot != 0 else 0.0
             satuan = "mg/kg"
 
         # simpan tanpa membulatkan—kita bulatkan saat tampil
