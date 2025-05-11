@@ -96,7 +96,7 @@ def homepage():
     # Footer
     st.markdown("---")
     st.markdown("© 2025 Aplikasi Perhitungan Kadar Metode Kromatografi Gas")
-
+# Fungsi c terukur
 def c_terukur():
     st.title("Perhitungan C Terukur")
     
@@ -132,7 +132,7 @@ page = st.sidebar.radio("Pilih Halaman:", ["Homepage", "C Terukur", "kadar", "%R
 if page == "Homepage":
     homepage()
 elif page == "C Terukur":
-    blank_page("C Terukur")
+    c_terukur("C Terukur")
 elif page == "kadar":
     blank_page("Kadar")
 elif page == "%RPD":
