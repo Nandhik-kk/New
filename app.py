@@ -100,29 +100,33 @@ def homepage():
 def c_terukur():
     st.title("Perhitungan C Terukur (UV-Vis)")
 
-    # Input nama sampel
-    nama = st.text_input("Nama Sampel", value="Sample 1")
+    # Pilih jumlah perhitungan
+    n = st.slider("Jumlah perhitungan sampel", min_value=1, max_value=3, value=1, help="Pilih 1–3 sampel sekaligus")
 
-    # Input parameter kalibrasi
-    absorban = st.number_input("Masukkan nilai absorbansi sampel", min_value=0.0, value=0.0, step=0.001)
-    intercept = st.number_input("Masukkan nilai intercept (b)", min_value=0.0, value=0.0, step=0.001)
-    slope = st.number_input("Masukkan nilai slope (m)", min_value=0.0, value=1.0, step=0.001)
+    # Tempat menyimpan hasil
+    results = []
 
-    # Tombol hitung
-    if st.button("Hitung C Terukur"):
-        # rumus: (Absorban - intercept) / slope
+    for i in range(1, n+1):
+        st.markdown(f"### Sampel #{i}")
+        nama = st.text_input(f"Nama Sampel #{i}", value=f"Sample {i}", key=f"nama_{i}")
+        absorban = st.number_input(f"Absorbansi (A) Sampel #{i}", format="%.4f",
+                                   min_value=0.0, step=0.0001, key=f"a_{i}")
+        intercept = st.number_input(f"Intercept (b) Sampel #{i}", format="%.4f",
+                                    min_value=0.0, step=0.0001, key=f"b_{i}")
+        slope = st.number_input(f"Slope (m) Sampel #{i}", format="%.4f",
+                                min_value=0.0001, step=0.0001, key=f"m_{i}")
+
+        # Hitung segera, tapi tampilin nanti
         c_ukur = (absorban - intercept) / slope
-        st.success(f"Konsentrasi/C terukur pada '{nama}' sebesar {c_ukur:.4f} mg/L (ppm)")
+        # Simpan nama + hasil rounded 4 desimal
+        results.append((nama, round(c_ukur, 4)))
 
-    # Opsi batch: jika ingin input banyak sampel sekaligus
-    if st.checkbox("Masukkan data batch (multiple samples)"):
-        st.markdown("**Format CSV:** nama,absorban,intercept,slope")
-        uploaded = st.file_uploader("Upload CSV", type="csv")
-        if uploaded:
-            df = pd.read_csv(uploaded)
-            # hitung kolom C_terukur
-            df["C_terukur (mg/L)"] = (df["absorban"] - df["intercept"]) / df["slope"]
-            st.dataframe(df)
+        st.markdown("---")
+
+    # Tampilkan semua hasil
+    if st.button("Hitung Semua C Terukur"):
+        for nama, nilai in results:
+            st.success(f"Konsentrasi/C terukur pada '{nama}' = {nilai:.4f} mg/L (ppm)")
 # --- Fungsi placeholder ---
 def blank_page(title):
     st.title(title)
