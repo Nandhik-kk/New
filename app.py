@@ -123,24 +123,25 @@ def c_terukur():
             # hitung kolom C_terukur
             df["C_terukur (mg/L)"] = (df["absorban"] - df["intercept"]) / df["slope"]
             st.dataframe(df)
-# Fungsi fallback untuk halaman yang belum diisi
-
+# --- Fungsi placeholder ---
 def blank_page(title):
     st.title(title)
-    st.write("Halaman ini masih dalam pengembangan.")
-    st.write("Silakan kembali ke halaman utama.")
+    st.write("Sedang dikembangkan…")
 
-# Sidebar untuk navigasi
+# --- Sidebar & Routing ---
 st.sidebar.title("Navigasi")
 page = st.sidebar.radio("Pilih Halaman:", ["Homepage", "C Terukur", "kadar", "%RPD", "%REC"])
 
-# Tampilkan halaman yang dipilih
 if page == "Homepage":
     homepage()
 elif page == "C Terukur":
-    c_terukur
+    c_terukur()
 elif page == "kadar":
     blank_page("Kadar")
+elif page == "%RPD":
+    blank_page("%RPD")
+elif page == "%REC":
+    blank_page("%REC")
 elif page == "%RPD":
     blank_page("%RPD")
 elif page == "%REC":
