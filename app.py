@@ -56,7 +56,7 @@ def homepage():
     with col1:
         # Placeholder untuk gambar spektro GC
         st.image("https://lsi.fleischhacker-asia.biz/wp-content/uploads/2022/05/Spektrofotometer-UV-VIS-Fungsi-Prinsip-Kerja-dan-Cara-Kerjanya.jpg", 
-                 caption="Alat Spektrofotometer(PT. Laboratorium Solusi Indonesia", use_container_width=True)
+                 caption="Alat Spektrofotometer(PT. Laboratorium Solusi Indonesia)", use_container_width=True)
         st.info("Gambar di atas adalah alat Spektrofotometer yang digunakan untuk analisis.")
     
     with col2:
@@ -127,6 +127,55 @@ def c_terukur():
     if st.button("Hitung Semua C Terukur"):
         for nama, nilai in results:
             st.success(f"Konsentrasi/C terukur pada '{nama}' = {nilai:.4f} mg/L (ppm)")
+# Fungsi Kadar
+def kadar():
+    st.title("Perhitungan Kadar")
+
+    # Pilih tipe perhitungan
+    tipe = st.radio("Pilih jenis perhitungan:", 
+                    ("A. Tanpa Bobot Sample (ppm/mg·L⁻¹)", 
+                     "B. Dengan Bobot Sample (mg·kg⁻¹)"))
+
+    # Slider jumlah sampel
+    n = st.slider("Jumlah sampel", 1, 3, 1)
+
+    results = []
+
+    for i in range(1, n+1):
+        st.markdown(f"---\n### Sampel #{i}")
+        nama = st.text_input(f"Nama Sampel #{i}", f"Sample {i}", key=f"k_nama_{i}")
+
+        if tipe.startswith("A"):
+            # A. tanpa bobot
+            c_ukur    = st.number_input(f"C terukur (mg/L) #{i}", format="%.4f",
+                                        min_value=0.0, step=0.0001, key=f"kA_c_{i}")
+            blanko    = st.number_input(f"C terukur blanko (mg/L) #{i}", format="%.4f",
+                                        min_value=0.0, step=0.0001, key=f"kA_b_{i}")
+            faktor    = st.number_input(f"Faktor Pengenceran #{i}", format="%.4f",
+                                        min_value=0.0, step=0.0001, value=1.0, key=f"kA_f_{i}")
+            nilai = (c_ukur - blanko) * faktor
+            satuan = "mg/L (ppm)"
+
+        else:
+            # B. dengan bobot
+            c_ukur  = st.number_input(f"C terukur (mg/L) #{i}", format="%.4f",
+                                      min_value=0.0, step=0.0001, key=f"kB_c_{i}")
+            vol     = st.number_input(f"Volume labu takar awal (L) #{i}", format="%.4f",
+                                      min_value=0.0, step=0.0001, key=f"kB_v_{i}")
+            bobot   = st.number_input(f"Bobot sample (kg) #{i}", format="%.4f",
+                                      min_value=0.0001, step=0.0001, key=f"kB_w_{i}")
+            nilai = (c_ukur - vol) / bobot
+            satuan = "mg/kg"
+
+        # simpan hasil, dibulatkan 4 desimal
+        results.append((nama, round(nilai, 4), satuan))
+
+    # tombol hitung
+    if st.button("Hitung Kadar"):
+        st.markdown("## Hasil Perhitungan")
+        for nama, nilai, satuan in results:
+            st.success(f"Kadar pada '{nama}' = {nilai:.4f} {satuan}")
+
 # --- Fungsi placeholder ---
 def blank_page(title):
     st.title(title)
@@ -141,7 +190,7 @@ if page == "Homepage":
 elif page == "C Terukur":
     c_terukur()
 elif page == "kadar":
-    blank_page("Kadar")
+    kadar()
 elif page == "%RPD":
     blank_page("%RPD")
 elif page == "%REC":
