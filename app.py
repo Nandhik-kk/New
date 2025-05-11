@@ -96,7 +96,7 @@ def homepage():
     # Footer
     st.markdown("---")
     st.markdown("© 2025 Aplikasi Perhitungan Kadar Metode Kromatografi Gas")
-# Fungsi untuk halaman C Terukur
+
 def c_terukur():
     st.title("Perhitungan C Terukur")
     
