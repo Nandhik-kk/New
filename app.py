@@ -61,7 +61,7 @@ def homepage():
     
     with col2:
         st.markdown('<div class="info-box">', unsafe_allow_html=True)
-        st.subheader("Tentang Kromatografi Gas (GC)")
+        st.subheader("Tentang Spektrofotometri UV-Vis")
         st.write("""
         Spektrofotometri UV-Vis adalah teknik analisis yang digunakan untuk mengukur absorbansi suatu senyawa
         terhadap cahaya ultraviolet (UV) dan cahaya tampak (visible/Vis). Teknik ini dimanfaatkan secara luas
