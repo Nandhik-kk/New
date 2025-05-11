@@ -55,7 +55,7 @@ def homepage():
     
     with col1:
         # Placeholder untuk gambar spektro GC
-        st.image("https://labftp.ub.ac.id/wp-content/uploads/2023/02/uv-vis_compresss.jpg", 
+        st.image("https://image.made-in-china.com/2f0j00wLARbCFdiJoT/Single-Beam-UV-Vis-Spectrophotometer-with-Changeable-Slit.webp", 
                  caption="Alat Spektrofotometer", use_container_width=True)
         st.info("Gambar di atas adalah alat Spektrofotometer yang digunakan untuk analisis.")
     
