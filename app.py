@@ -83,7 +83,7 @@ def homepage():
     
     with col1:
         st.markdown('**Perhitungan Kadar**')
-        st.write("Perhitungan otomatis berdasarkan area peak dan faktor respons")
+        st.write("Perhitungan otomatis berdasarkan nilai absorbansinya")
     
     with col2:
         st.markdown('**Visualisasi Data**')
