@@ -96,6 +96,28 @@ def homepage():
     # Footer
     st.markdown("---")
     st.markdown("© 2025 Aplikasi Perhitungan Kadar Metode Kromatografi Gas")
+# Fungsi untuk halaman C Terukur
+def c_terukur():
+    st.title("Perhitungan C Terukur")
+    
+    # Misal: input nilai area peak dan faktor respons
+    area_sample = st.number_input("Masukkan area peak sampel", min_value=0.0, value=0.0, step=0.1)
+    faktor_respons = st.number_input("Masukkan faktor respons", min_value=0.0, value=1.0, step=0.01)
+    
+    # Tombol hitung
+    if st.button("Hitung C Terukur"):
+        c_terukur = area_sample * faktor_respons
+        st.success(f"C Terukur = {c_terukur:.4f}")
+    
+    # Contoh: tampilkan tabel jika ada data batch
+    if st.checkbox("Tampilkan contoh data batch"):
+        df = pd.DataFrame({
+            "Nama Sampel": ["A", "B", "C"],
+            "Area Peak": [1234, 2345, 3456],
+            "Faktor Respons": [1.02, 0.98, 1.00]
+        })
+        st.dataframe(df)
+# Fungsi fallback untuk halaman yang belum diisi
 
 def blank_page(title):
     st.title(title)
