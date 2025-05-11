@@ -222,8 +222,5 @@ elif page == "%RPD":
     blank_page("%RPD")
 elif page == "%REC":
     blank_page("%REC")
-elif page == "%RPD":
-    blank_page("%RPD")
-elif page == "%REC":
-    blank_page("%REC")
+
 
