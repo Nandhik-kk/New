@@ -56,7 +56,7 @@ def homepage():
     with col1:
         # Placeholder untuk gambar spektro GC
         st.image("https://lsi.fleischhacker-asia.biz/wp-content/uploads/2022/05/Spektrofotometer-UV-VIS-Fungsi-Prinsip-Kerja-dan-Cara-Kerjanya.jpg", 
-                 caption="Alat Spektrofotometer", use_container_width=True)
+                 caption="Alat Spektrofotometer(PT. Laboratorium Solusi Indonesia", use_container_width=True)
         st.info("Gambar di atas adalah alat Spektrofotometer yang digunakan untuk analisis.")
     
     with col2:
