@@ -201,6 +201,7 @@ def kadar():
         st.markdown("## Hasil Perhitungan")
         for nama, nilai, satuan in results:
             st.success(f"Kadar pada '{nama}' = {nilai:.7f} {satuan}")
+            
 # Fungsi RPD
 def rpd():
     st.title("% RPD")
