@@ -90,7 +90,7 @@ def homepage():
         st.write("Perhitungan otomatis berdasarkan nilai kadarnya")
     
     with col3:
-        st.markdown('**Perhitungan %Rec**')
+        st.markdown('**Perhitungan %Recovery**')
         st.write("Perhitungan otomatis berdasarkan nilai kadarnya")
     
     # Footer
