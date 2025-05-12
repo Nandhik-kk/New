@@ -11,38 +11,7 @@ st.set_page_config(
     initial_sidebar_state="expanded"
 )
 
-# CSS untuk tampilan cerah
-st.markdown("""
-<style>
-    .main {
-        background-color: #f8f9fa;
-    }
-    .stApp {
-        max-width: 1200px;
-        margin: 0 auto;
-    }
-    h1, h2, h3 {
-        color: #0066cc;
-    }
-    .stButton button {
-        background-color: #0066cc;
-        color: white;
-    }
-    .info-box {
-        background-color: #e6f2ff;
-        padding: 20px;
-        border-radius: 10px;
-        border-left: 5px solid #0066cc;
-        margin-bottom: 20px;
-    }
-    .header-container {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        margin-bottom: 20px;
-    }
-</style>
-""", unsafe_allow_html=True)
+
 
 # Fungsi untuk setiap halaman
 def homepage():
