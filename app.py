@@ -233,8 +233,46 @@ def rpd():
         # Tampilkan hasil dengan 7 desimal
         st.success(f"%RPD = {rpd_val:.7f} %")
 
-        # Keterangan rentang
-        if 80 <= rpd_val <= 120:
+        # Keterangan batas 5%
+        if rpd_val < 5:
+            st.info("Hasil oke")
+        else:
+            st.warning("Hasil tidak oke")
+# Fungsi REC
+def rec():
+    st.title("% REC")
+
+    # Keterangan sebelum input
+    st.markdown(
+        "C1, C2, dan C3 setiap perhitungan suatu kadar berbeda-beda, "
+        "tergantung metode yang digunakan saat preparasi!"
+    )
+
+    # Input C1, C2 & C3
+    c1 = st.number_input(
+        "Masukkan C1", 
+        min_value=0.0, value=0.0, step=0.0000001, format="%.7f", key="rec_c1"
+    )
+    c2 = st.number_input(
+        "Masukkan C2", 
+        min_value=0.0, value=0.0, step=0.0000001, format="%.7f", key="rec_c2"
+    )
+    c3 = st.number_input(
+        "Masukkan C3", 
+        min_value=0.0, value=0.0, step=0.0000001, format="%.7f", key="rec_c3"
+    )
+
+    # Hitung
+    if st.button("Hitung %REC"):
+        # Rumus: (C3 - C1) / C2 * 100
+        den = c2 if c2 != 0 else 1
+        rec_val = (c3 - c1) / den * 100
+
+        # Tampilkan hasil dengan 7 desimal
+        st.success(f"%REC = {rec_val:.7f} %")
+
+        # Keterangan rentang 80–120%
+        if 80 <= rec_val <= 120:
             st.info("Hasil oke")
         else:
             st.warning("Hasil tidak oke")
@@ -259,6 +297,6 @@ elif page == "kadar":
 elif page == "%RPD":
     rpd()
 elif page == "%REC":
-    blank_page("%REC")
+    rec()
 
 
