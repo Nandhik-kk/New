@@ -342,6 +342,6 @@ elif page == "%RPD":
     rpd()
 elif page == "%REC":
     rec()
-elif page == "CONTOH:
+elif page == "CONTOH":
     contoh()
 
