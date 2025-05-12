@@ -1,5 +1,5 @@
 [theme]
-primaryColor = "#004d40"               # warna utama (tombol, link aktif, dsb)
+primaryColor = "#001dff"               # warna utama (tombol, link aktif, dsb)
 backgroundColor = "#e0f7fa"            # warna background halaman (abu-abu muda / aqua)
 secondaryBackgroundColor = "#b2ebf2"   # warna background sidebar
 textColor = "#004d40"                  # warna teks
