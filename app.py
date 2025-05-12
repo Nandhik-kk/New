@@ -10,7 +10,22 @@ st.set_page_config(
     layout="wide",
     initial_sidebar_state="expanded"
 )
+# tambahkan CSS global
+st.markdown("""
+<style>
+    .main { background-color: #eeeeee; }
+    /* … CSS homepage-mu … */
 
+    /* Ganti warna sidebar jadi biru muda */
+    div[data-testid="stSidebar"] > div:first-child {
+        background-color: #e0f7fa !important;
+    }
+    div[data-testid="stSidebar"] h2,
+    div[data-testid="stSidebar"] label {
+        color: #004d40 !important;
+    }
+</style>
+""", unsafe_allow_html=True)
 # CSS untuk tampilan cerah
 st.markdown("""
 <style>
