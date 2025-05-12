@@ -46,56 +46,88 @@ st.markdown("""
 
 # Fungsi untuk setiap halaman
 def homepage():
+    st.markdown("""
+    <style>
+        .main {
+            background-color: #eeeeee;
+        }
+        .stApp {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        h1, h2, h3 {
+            color: #4a4a4a;
+        }
+        .stButton button {
+            background-color: #5a5a5a;
+            color: white;
+        }
+        .info-box {
+            background-color: #f2f2f2;
+            padding: 20px;
+            border-radius: 10px;
+            border-left: 5px solid #999999;
+            margin-bottom: 20px;
+        }
+        .header-container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 20px;
+        }
+    </style>
+    """, unsafe_allow_html=True)
+
     st.markdown('<div class="header-container">', unsafe_allow_html=True)
-    st.title('Aplikasi Perhitungan Kadar Metode Spektrofotometri UV-Vis')
+    st.title("🧪 Aplikasi Perhitungan Kadar Metode Spektrofotometri UV-Vis")
     st.markdown('</div>', unsafe_allow_html=True)
     
     # Gambar dan penjelasan dalam layout kolom
     col1, col2 = st.columns([1, 1])
     
     with col1:
-        # Placeholder untuk gambar spektro GC
-        st.image("https://lsi.fleischhacker-asia.biz/wp-content/uploads/2022/05/Spektrofotometer-UV-VIS-Fungsi-Prinsip-Kerja-dan-Cara-Kerjanya.jpg", 
-                 caption="Alat Spektrofotometer(PT. Laboratorium Solusi Indonesia)", use_container_width=True)
-        st.info("Gambar di atas adalah alat Spektrofotometer yang digunakan untuk analisis.")
+        st.image(
+            "https://lsi.fleischhacker-asia.biz/wp-content/uploads/2022/05/Spektrofotometer-UV-VIS-Fungsi-Prinsip-Kerja-dan-Cara-Kerjanya.jpg", 
+            caption="🖼️ Alat Spektrofotometer (sumber: PT. Laboratorium Solusi Indonesia)", 
+            use_container_width=True
+        )
+        st.info("🔍 Gambar di atas adalah alat spektrofotometer yang digunakan untuk analisis UV-Vis.")
     
     with col2:
         st.markdown('<div class="info-box">', unsafe_allow_html=True)
-        st.subheader("Tentang Spektrofotometri UV-Vis")
+        st.subheader("📖 Tentang Spektrofotometri UV-Vis")
         st.write("""
-        Spektrofotometri UV-Vis adalah teknik analisis yang digunakan untuk mengukur absorbansi suatu senyawa
-        terhadap cahaya ultraviolet (UV) dan cahaya tampak (visible/Vis). Teknik ini dimanfaatkan secara luas
-        untuk analisis kualitatif dan kuantitatif senyawa berdasarkan interaksi cahaya dengan molekul dalam sampel.
-        
-        Komponen utama dalam sistem Spektrofotometer UV-Vis:
-        - Sumber cahaya: menghasilkan cahaya UV dan Vis (biasanya deuterium untuk UV dan tungsten untuk Vis)
-        - Monokromator: memisahkan panjang gelombang cahaya agar hanya satu panjang gelombang yang mengenai sampel
-        - Kuvet: wadah tempat sampel diletakkan
-        - Detektor: menangkap cahaya yang keluar dari sampel dan mengubahnya menjadi sinyal listrik
-        
-        Aplikasi ini membantu dalam menentukan konsentrasi senyawa berdasarkan hukum Lambert-Beer menggunakan data absorbansi yang diperoleh dari hasil analisis UV-Vis.
+        Spektrofotometri UV-Vis adalah teknik analisis 💡 untuk mengukur seberapa banyak cahaya ☀️
+        diserap oleh suatu senyawa pada panjang gelombang ultraviolet dan tampak.
+
+        **🔧 Komponen utama:**
+        - 💡 Sumber cahaya (deuterium untuk UV, tungsten untuk Vis)
+        - 🎯 Monokromator (memilih panjang gelombang)
+        - 🧫 Kuvet (tempat sampel)
+        - 🎛️ Detektor (mengubah sinyal cahaya menjadi data)
+
+        Teknik ini banyak digunakan untuk analisis kuantitatif dan kualitatif bahan kimia, air, obat, dan lainnya 🧪.
         """)
         st.markdown('</div>', unsafe_allow_html=True)
     
-    # Informasi tambahan
-    st.subheader("Fitur Aplikasi")
+    st.subheader("⚙️ Fitur Aplikasi")
     col1, col2, col3 = st.columns(3)
     
     with col1:
-        st.markdown('**Perhitungan Kadar**')
-        st.write("Perhitungan otomatis berdasarkan nilai absorbansinya")
-    
+        st.markdown("📏 **Perhitungan Kadar**")
+        st.write("Menghitung kadar senyawa berdasarkan nilai absorbansi")
+
     with col2:
-        st.markdown('**Perhitungan %RPD**')
-        st.write("Perhitungan otomatis berdasarkan nilai kadarnya")
-    
+        st.markdown("🔄 **Perhitungan %RPD**")
+        st.write("Evaluasi kehandalan pengukuran duplikat")
+
     with col3:
-        st.markdown('**Perhitungan %Recovery**')
-        st.write("Perhitungan otomatis berdasarkan nilai kadarnya")
+        st.markdown("🎯 **Perhitungan %Recovery**")
+        st.write("Mengukur akurasi metode melalui nilai %REC")
     
-    # Footer
     st.markdown("---")
-    st.markdown("© 2025 Aplikasi Perhitungan Kadar Metode Spektrofotometri UV-Vis")
+    st.markdown("© 2025 🧪 Aplikasi Perhitungan Kadar Spektrofotometri UV-Vis | Kelompok 4 1F")
+
 # Fungsi c terukur
 def c_terukur():
     st.title("Perhitungan C Terukur (UV-Vis)")
