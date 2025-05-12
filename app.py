@@ -86,16 +86,16 @@ def homepage():
         st.write("Perhitungan otomatis berdasarkan nilai absorbansinya")
     
     with col2:
-        st.markdown('**Visualisasi Data**')
-        st.write("Grafik dan visualisasi hasil analisis")
+        st.markdown('**Perhitungan %RPD**')
+        st.write("Perhitungan otomatis berdasarkan nilai kadarnya")
     
     with col3:
-        st.markdown('**Laporan Hasil**')
-        st.write("Eksport hasil analisis dalam berbagai format")
+        st.markdown('**Perhitungan %Rec**')
+        st.write("Perhitungan otomatis berdasarkan nilai kadarnya")
     
     # Footer
     st.markdown("---")
-    st.markdown("© 2025 Aplikasi Perhitungan Kadar Metode Kromatografi Gas")
+    st.markdown("© 2025 Aplikasi Perhitungan Kadar Metode Spektrofotometri UV-Vis")
 # Fungsi c terukur
 def c_terukur():
     st.title("Perhitungan C Terukur (UV-Vis)")
@@ -201,6 +201,43 @@ def kadar():
         st.markdown("## Hasil Perhitungan")
         for nama, nilai, satuan in results:
             st.success(f"Kadar pada '{nama}' = {nilai:.7f} {satuan}")
+# Fungsi RPD
+def rpd():
+    st.title("% RPD")
+
+    # Keterangan sebelum input
+    st.markdown(
+        "C1 dan C2 setiap perhitungan suatu kadar berbeda-beda, "
+        "tergantung metode yang digunakan saat preparasi."
+    )
+
+    # Input C1 & C2
+    c1 = st.number_input(
+        "Masukkan C1", 
+        min_value=0.0, value=0.0, step=0.0000001, format="%.7f", key="rpd_c1"
+    )
+    c2 = st.number_input(
+        "Masukkan C2", 
+        min_value=0.0, value=0.0, step=0.0000001, format="%.7f", key="rpd_c2"
+    )
+
+    # Hitung
+    if st.button("Hitung %RPD"):
+        # Numerator = |C1 - C2|
+        num = abs(c1 - c2)
+        # Denominator = rata-rata (C1 + C2)/2
+        den = (c1 + c2) / 2 if (c1 + c2) != 0 else 1  # hindari div/0
+        rpd_val = num / den * 100
+
+        # Tampilkan hasil dengan 7 desimal
+        st.success(f"%RPD = {rpd_val:.7f} %")
+
+        # Keterangan rentang
+        if 80 <= rpd_val <= 120:
+            st.info("Hasil oke")
+        else:
+            st.warning("Hasil tidak oke")
+
 
 
 # --- Fungsi placeholder ---
@@ -219,7 +256,7 @@ elif page == "C Terukur":
 elif page == "kadar":
     kadar()
 elif page == "%RPD":
-    blank_page("%RPD")
+    rpd()
 elif page == "%REC":
     blank_page("%REC")
 
