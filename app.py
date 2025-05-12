@@ -278,67 +278,6 @@ def rec():
             st.warning("Hasil tidak oke")
 
 
-# fungsi contoh
-def contoh():
-    st.title("Contoh Nilai C1, C2, dan C3")
-
-    # Keterangan unik tentang Spektrofotometri UV-Vis
-    st.markdown("""
-    ### 🔬 Apa itu Spektrofotometri UV-Vis?  
-    Spektrofotometri UV-Vis adalah metode analisis kuantitatif 📊 yang digunakan untuk mengukur seberapa banyak cahaya 🌈 diserap oleh suatu senyawa pada panjang gelombang tertentu (ultraviolet dan visible).  
-
-    🧪 Prinsip utamanya berdasarkan **Hukum Lambert-Beer**, yaitu:
-    > "Semakin tinggi konsentrasi zat, semakin besar nilai absorbansinya."
-
-    💡 Aplikasi ini sering digunakan untuk:
-    - Menentukan kadar senyawa dalam larutan 📦
-    - Uji kualitas air 💧, makanan 🍎, dan obat 💊
-    - Kontrol mutu dalam industri farmasi dan kimia ⚗️
-    """)
-
-    st.markdown("---")
-
-    st.markdown("""
-    ### ℹ️ Penjelasan Singkat:
-    - **C1**: Konsentrasi awal sebelum proses preparasi/pelarutan.
-    - **C2**: Konsentrasi target/teoritis yang ingin dicapai.
-    - **C3**: Hasil pengukuran dari sampel setelah proses preparasi.
-    
-    Nilai-nilai ini digunakan untuk menghitung akurasi (%REC) atau reprodusibilitas (%RPD).
-    """)
-
-    contoh_opsi = st.selectbox(
-        "📌 Pilih jenis contoh perhitungan",
-        ("Pilih", "Contoh %RPD", "Contoh %REC")
-    )
-
-    if contoh_opsi == "Contoh %RPD":
-        st.subheader("📐 Contoh Nilai untuk %RPD")
-        st.code("""
-Misal:
-C1 = 5.0000000
-C2 = 4.9000000
-
-%RPD = |5 - 4.9| / ((5 + 4.9)/2) × 100
-     = 0.1 / 4.95 × 100 = 2.0202%
-
-✅ Hasil oke karena < 5%
-        """, language="text")
-
-    elif contoh_opsi == "Contoh %REC":
-        st.subheader("📐 Contoh Nilai untuk %REC")
-        st.code("""
-Misal:
-C1 = 2.0000000
-C2 = 2.0000000
-C3 = 3.8000000
-
-%REC = (3.8 - 2) / 2 × 100 = 90.0000%
-
-✅ Hasil oke karena berada dalam rentang 80–120%
-        """, language="text")
-
-
 # --- Fungsi placeholder ---
 def blank_page(title):
     st.title(title)
@@ -346,7 +285,7 @@ def blank_page(title):
 
 # --- Sidebar & Routing ---
 st.sidebar.title("Navigasi")
-page = st.sidebar.radio("Pilih Halaman:", ["Homepage", "C Terukur", "kadar", "%RPD", "%REC","CONTOH"])
+page = st.sidebar.radio("Pilih Halaman:", ["Homepage", "C Terukur", "kadar", "%RPD", "%REC"])
 
 if page == "Homepage":
     homepage()
@@ -358,6 +297,3 @@ elif page == "%RPD":
     rpd()
 elif page == "%REC":
     rec()
-elif page == "CONTOH":
-    contoh()
-
