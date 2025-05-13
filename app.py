@@ -1,7 +1,16 @@
+from streamlit_lottie import st_lottie
+import requests
 import streamlit as st
 import pandas as pd
 import numpy as np
 from PIL import Image
+
+# fungsi lottie
+def load_lottieurl(url: str):
+    r = requests.get(url)
+    if r.status_code != 200:
+        return None
+    return r.json()
 
 # Pengaturan halaman
 st.set_page_config(
@@ -98,7 +107,15 @@ def homepage():
 
 # Fungsi c terukur
 def c_terukur():
-    st.title("Perhitungan C Terukur (UV-Vis)")
+    st.title("🔬 Perhitungan C Terukur")
+
+    # Load animasi dari URL
+    lottie_url = "https://lottie.host/e79a2339-95d9-4ef3-a88c-b1f366cee77e/KZcPl75CcB.lottie"
+    lottie_json = load_lottieurl(lottie_url)
+
+    # Tampilkan animasi (di bawah judul)
+    if lottie_json:
+        st_lottie(lottie_json, height=300, key="c_terukur_anim")
 
     # Pilih jumlah perhitungan
     n = st.slider("Jumlah perhitungan sampel", min_value=1, max_value=3, value=1, help="Pilih 1–3 sampel sekaligus")
